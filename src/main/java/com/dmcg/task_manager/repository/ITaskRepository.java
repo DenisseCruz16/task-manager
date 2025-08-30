@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.dmcg.task_manager.model.Task;
 
-public interface TaskRepository extends CrudRepository<Task, String>
+public interface ITaskRepository extends CrudRepository<Task, String>
 {}

@@ -14,18 +14,18 @@ public class Task {
 	private String id;
 	private String title;
 	private String description;
-	private Date date;
+	private Date dueDate;
 	
-	private enum Status {Pending,In_progress,Completed}
+	private enum Status {PENDING,IN_PROGRESS,COMPLETED}
 	
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
-	public Task(String id, String title, String description, Date date, Status status) {
+	public Task(String id, String title, String description, Date dueDate, Status status) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
-		this.date = date;
+		this.dueDate = dueDate;
 		this.status = status;
 	}
 	
@@ -53,12 +53,12 @@ public class Task {
 		this.description = description;
 	}
 	
-	public Date getDate() {
-		return date;
+	public Date getDueDate() {
+		return dueDate;
 	}
 	
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDueDate(Date dueDate) {
+		this.dueDate = dueDate;
 	};
 	
 	public Status getStatus() {
