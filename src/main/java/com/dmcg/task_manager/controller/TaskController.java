@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dmcg.task_manager.model.Task;
 import com.dmcg.task_manager.service.TaskServiceImpl;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
@@ -33,12 +35,12 @@ public class TaskController {
 	}
 	
 	@PostMapping
-	public Task createTask(@RequestBody Task task) {
+	public Task createTask(@RequestBody @Valid Task task) {
 		return taskService.createTask(task);
 	}
 	
 	@PutMapping("/{id}")
-	public Task updateTask(@PathVariable String id,@RequestBody Task task) {
+	public Task updateTask(@PathVariable String id,@RequestBody @Valid Task task) {
 		return taskService.updateTask(id, task);
 	}
 	

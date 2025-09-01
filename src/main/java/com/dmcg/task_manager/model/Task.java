@@ -6,15 +6,21 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TASK")
 public class Task {
 
+	//@NotNull
 	@Id
+	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
+	@NotNull
 	private String title;
 	private String description;
 	@Column(name = "DUE_DATE")
@@ -22,6 +28,7 @@ public class Task {
 	
 	private enum Status {PENDING,IN_PROGRESS,COMPLETED}
 	
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
