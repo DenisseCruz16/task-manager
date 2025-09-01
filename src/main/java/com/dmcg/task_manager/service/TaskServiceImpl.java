@@ -1,0 +1,52 @@
+package com.dmcg.task_manager.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dmcg.task_manager.model.Task;
+import com.dmcg.task_manager.repository.ITaskRepository;
+
+@Service
+public class TaskServiceImpl implements ITaskService{
+	
+	@Autowired
+	private ITaskRepository taskRepository;
+
+	@Override
+	public void createTask(Task task) {
+		taskRepository.save(task);
+		
+	}
+
+	@Override
+	public List<Task> getTasks() {
+		return (List<Task>)taskRepository.findAll();
+	}
+
+	@Override
+	public Task getTaskById(String id) {
+		Task task = taskRepository.findById(id).get();
+		return task;
+	}
+
+	@Override
+	public void updateTask(String id, Task taskToUpdate) {
+		Task task = taskRepository.findById(id).get();
+		
+		task.setId(taskToUpdate.getId());
+		task.setTitle(taskToUpdate.getTitle());
+		task.setDescription(taskToUpdate.getDescription());
+		task.setDueDate(task.getDueDate());
+		task.setStatus(taskToUpdate.getStatus());
+		
+	}
+
+	@Override
+	public void deleteTask(String id) {
+		taskRepository.deleteById(id);
+		
+	}
+
+}
