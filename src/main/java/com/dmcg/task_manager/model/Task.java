@@ -2,24 +2,32 @@ package com.dmcg.task_manager.model;
 
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "TASK")
 public class Task {
 
 	@Id
 	private String id;
 	private String title;
 	private String description;
+	@Column(name = "DUE_DATE")
 	private Date dueDate;
 	
 	private enum Status {PENDING,IN_PROGRESS,COMPLETED}
 	
 	@Enumerated(EnumType.STRING)
 	private Status status;
+	
+	public Task() {
+		
+	}
 	
 	public Task(String id, String title, String description, Date dueDate, Status status) {
 		this.id = id;
