@@ -10,19 +10,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TASK")
 public class Task {
 
-	//@NotNull
 	@Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private String id;
-	@NotNull
+	@NotEmpty
 	private String title;
 	private String description;
+	@Future
 	@Column(name = "DUE_DATE")
 	private Date dueDate;
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dmcg.task_manager.exception.IdNotMatchingException;
 import com.dmcg.task_manager.model.Task;
 import com.dmcg.task_manager.repository.ITaskRepository;
 
@@ -33,9 +34,14 @@ public class TaskServiceImpl implements ITaskService{
 
 	@Override
 	public Task updateTask(String id, Task taskToUpdate) {
+		
 		Task task = taskRepository.findById(id).get();
 		
-		task.setId(taskToUpdate.getId());
+		if(!taskToUpdate.getId().equals(id)){
+			throw new IdNotMatchingException("Ids provided are not matching.");
+		}
+		
+		//task.setId(taskToUpdate.getId());
 		task.setTitle(taskToUpdate.getTitle());
 		task.setDescription(taskToUpdate.getDescription());
 		task.setDueDate(taskToUpdate.getDueDate());
@@ -47,6 +53,8 @@ public class TaskServiceImpl implements ITaskService{
 
 	@Override
 	public void deleteTask(String id) {
+		
+		taskRepository.findById(id).get();
 		taskRepository.deleteById(id);
 		
 	}
