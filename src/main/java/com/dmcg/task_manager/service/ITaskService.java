@@ -7,7 +7,7 @@ import com.dmcg.task_manager.model.Task;
 public interface ITaskService {
 
 	//Create task
-	public void createTask(Task task);	
+	public Task createTask(Task task);	
 		
 	//Get list of tasks
 	public List<Task> getTasks();
@@ -16,7 +16,7 @@ public interface ITaskService {
 	public Task getTaskById(String id);
 	
 	//Update task
-	public void updateTask(String id, Task taskToUpdate);
+	public Task updateTask(String id, Task taskToUpdate);
 	
 	//Delete task
 	public void deleteTask(String id);

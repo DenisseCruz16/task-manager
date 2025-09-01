@@ -15,8 +15,8 @@ public class TaskServiceImpl implements ITaskService{
 	private ITaskRepository taskRepository;
 
 	@Override
-	public void createTask(Task task) {
-		taskRepository.save(task);
+	public Task createTask(Task task) {
+		return taskRepository.save(task);
 		
 	}
 
@@ -32,14 +32,16 @@ public class TaskServiceImpl implements ITaskService{
 	}
 
 	@Override
-	public void updateTask(String id, Task taskToUpdate) {
+	public Task updateTask(String id, Task taskToUpdate) {
 		Task task = taskRepository.findById(id).get();
 		
 		task.setId(taskToUpdate.getId());
 		task.setTitle(taskToUpdate.getTitle());
 		task.setDescription(taskToUpdate.getDescription());
-		task.setDueDate(task.getDueDate());
+		task.setDueDate(taskToUpdate.getDueDate());
 		task.setStatus(taskToUpdate.getStatus());
+			
+		return taskRepository.save(task);
 		
 	}
 
