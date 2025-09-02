@@ -35,4 +35,5 @@ jobs:
       with:
         image: denissecruz/task-manager
         registry: docker.io
+        push: true
 
