@@ -51,7 +51,7 @@ http://localhost:8080/swagger-ui/index.html
 
 ## ⚙️ Running the Project Locally
 ### ✅ Prerequisites
-- Java 17+
+- Java 21+
 - Maven
 
 ### ▶️ Run
