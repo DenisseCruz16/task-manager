@@ -14,6 +14,9 @@ It supports creating, retrieving, updating, and deleting tasks, providing a simp
 - API documentation with **Swagger**
 - Containerization with **Docker**
 - In-memory database support (H2)
+  
+H2 database is embedded; no additional configuration is needed and already include some inserted records.
+H2 will store data in memory by default, so all data is lost when you stop the container.
 
 ---
 
@@ -55,7 +58,7 @@ http://localhost:8080/swagger-ui/index.html
 - Maven
 
 ### ▶️ Run
-#### Clone the repository:
+#### 1. Clone the repository:
 
 ```bash
 git clone https://github.com/DenisseCruz16/task-manager.git
@@ -63,23 +66,47 @@ git clone https://github.com/DenisseCruz16/task-manager.git
 cd task-manager
 ```
 
-#### Build the project:
+#### 2. Build the project:
 
 ```bash
 mvn clean install
 ```
 
-#### Run the application:
+#### 3. Run the application:
 
 ```bash
 mvn spring-boot:run
 ```
 
-#### Test the API using Postman or CURL:
+#### 4. Test the API using Postman or CURL:
 
 ```bash
 curl -X GET http://localhost:8080/tasks
 ```
+
+---
+
+## 🐳 Running the Project with Docker 
+### ✅ Prerequisites
+
+- Docker installed on your machine.
+
+## ▶️ Steps
+
+### 1. Build the Docker image:
+
+```bash
+docker build -t task-manager .
+```
+
+### 2. Run the container:
+
+```bash
+docker run -p 8080:8080 task-manager
+```
+
+Similar to local run, the API will be available at: http://localhost:8080.
+
 ---
 ## Rapid Learning Challenges
 
@@ -93,7 +120,10 @@ curl -X GET http://localhost:8080/tasks
   - Took brief written notes and saved useful links in a Word file for future reference.
     
 **• How did you resolve questions about Docker?**
-- Compared different sources (YouTube videos, written articles, and official guides).
+- Refresh Docker knowledge on docker file, docker image and docker container concepts.
+- Compared different sources (YouTube videos, written articles, and official guides) to understand basic structure and compare benefits or Spring generated and manual Dockerfile.
+- Continuous testing and specific corrections with AI help.
+- Use comments in file for my reference.
 
 **• What challenges did you encounter?**
 
