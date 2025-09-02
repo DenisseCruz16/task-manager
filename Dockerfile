@@ -13,7 +13,7 @@ FROM eclipse-temurin:21-jre
 #package manager. Install dumb-init
 RUN apt-get update && apt-get install -y dumb-init && rm -rf /var/lib/apt/lists/*
 RUN mkdir /app
-RUN addgroup --system javauser && adduser -S -s /bin/false -G javauser javauser
+RUN addgroup --system javauser && adduser --system --ingroup javauser --shell /bin/false javauser
 COPY --from=build /project/target/task-manager-0.0.1-SNAPSHOT.jar /app/task-manager.jar
 WORKDIR /app
 #Set permissions
