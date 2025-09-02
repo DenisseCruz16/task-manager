@@ -32,4 +32,7 @@ jobs:
 
     - name: Build and push Docker images
       uses: docker/build-push-action@v6.18.0
+      with:
+        image: denissecruz/task-manager
+        registry: docker.io
 
