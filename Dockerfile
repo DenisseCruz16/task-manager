@@ -22,4 +22,4 @@ USER javauser
 #Declare the Application Port
 EXPOSE 8080
 #command that runs when the container starts
-CMD ["dumb-init" "java" "-jar" "task-manager.jar"]
+CMD ["dumb-init", "java", "-jar", "task-manager.jar"]
