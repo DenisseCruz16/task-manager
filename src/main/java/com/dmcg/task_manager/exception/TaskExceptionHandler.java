@@ -25,5 +25,10 @@ public class TaskExceptionHandler {
 	public ResponseEntity<String> hadleIdNotMatchingException(IdNotMatchingException ex){
 		return new ResponseEntity<String>("Invalid input: " + ex.getMessage(), HttpStatus.BAD_REQUEST);
 	}
+	
+	@ExceptionHandler(exception = IllegalArgumentException.class)
+	public ResponseEntity<String> hadleIllegalArgumentException(IllegalArgumentException ex){
+		return new ResponseEntity<String>("Invalid input: " + ex.getMessage(), HttpStatus.BAD_REQUEST);
+	}
 
 }

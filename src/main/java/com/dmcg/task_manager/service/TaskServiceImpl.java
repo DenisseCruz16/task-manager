@@ -14,9 +14,16 @@ public class TaskServiceImpl implements ITaskService{
 	
 	@Autowired
 	private ITaskRepository taskRepository;
+	
 
 	@Override
 	public Task createTask(Task task) {
+		
+		validateTask(task);
+		taskRepository.findById(task.getId()).ifPresent((existingTask)->
+		{throw new IllegalArgumentException("ID: "+task.getId()+" is already present");}
+		);
+			
 		return taskRepository.save(task);
 		
 	}
@@ -35,6 +42,7 @@ public class TaskServiceImpl implements ITaskService{
 	@Override
 	public Task updateTask(String id, Task taskToUpdate) {
 		
+		validateTask(taskToUpdate);
 		Task task = taskRepository.findById(id).get();
 		
 		if(!taskToUpdate.getId().equals(id)){
@@ -58,5 +66,11 @@ public class TaskServiceImpl implements ITaskService{
 		taskRepository.deleteById(id);
 		
 	}
-
+	
+	
+	public void validateTask(Task task) {
+		if(task.getId() == null || task.getTitle()==null || task.getStatus()==null) 
+			 throw new IllegalArgumentException("ID , title and status are mandatory");
+	}
+	
 }

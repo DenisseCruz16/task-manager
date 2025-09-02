@@ -1,7 +1,6 @@
 package com.dmcg.task_manager.model;
 
-import java.util.Date;
-
+import java.time.LocalDate;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,7 +12,9 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "TASK")
 public class Task {
@@ -26,9 +27,9 @@ public class Task {
 	private String description;
 	@Future
 	@Column(name = "DUE_DATE")
-	private Date dueDate;
+	private LocalDate dueDate;
 	
-	private enum Status {PENDING,IN_PROGRESS,COMPLETED}
+	public enum Status {PENDING,IN_PROGRESS,COMPLETED}
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -38,7 +39,7 @@ public class Task {
 		
 	}
 	
-	public Task(String id, String title, String description, Date dueDate, Status status) {
+	public Task(String id, String title, String description, LocalDate dueDate, Status status) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -70,11 +71,11 @@ public class Task {
 		this.description = description;
 	}
 	
-	public Date getDueDate() {
+	public LocalDate getDueDate() {
 		return dueDate;
 	}
 	
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(LocalDate dueDate) {
 		this.dueDate = dueDate;
 	};
 	
