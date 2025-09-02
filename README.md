@@ -13,7 +13,7 @@ It supports creating, retrieving, updating, and deleting tasks, providing a simp
 - Delete tasks
 - API documentation with **Swagger**
 - Containerization with **Docker**
-- In-memory or real database support (H2, PostgreSQL, MongoDB)
+- In-memory database support (H2)
 
 ---
 
